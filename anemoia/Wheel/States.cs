@@ -108,7 +108,12 @@ namespace Engine.States
         public override void _PhysicsProcess(double delta)
         {
             currentState?.Update((float)delta);
-            Velocity = MoveAndSlide(Velocity, Vector2.Up, true);
+
+            MoveAndSlide();
+         
+
+
+
             Stamina = Math.Min(Stamina + 1 * (float)delta, 100f);
         }
     }
