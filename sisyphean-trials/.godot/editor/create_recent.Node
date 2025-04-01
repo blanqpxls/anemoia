@@ -1,0 +1,14 @@
+Sprite2D
+CollisionPolygon2D
+CollisionShape2D
+RigidBody2D
+Node
+AnimationPlayer
+AnimationTree
+Marker2D
+TextureProgressBar
+CanvasLayer
+StaticBody2D
+Button
+Node2D
+AnimatedSprite2D
