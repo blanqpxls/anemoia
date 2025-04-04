@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D
+public partial class Player : Beligerant
 {
 	[Export] public float MaxRun = 300.0f;
 	[Export] public float JumpVelocity = -900.0f;

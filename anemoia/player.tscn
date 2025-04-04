@@ -300,7 +300,7 @@ height = 44.0
 script = ExtResource("1_flj5s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-32, -40)
+position = Vector2(-27, -36)
 sprite_frames = SubResource("SpriteFrames_q1ej8")
 animation = &"idle"
 autoplay = "idle"

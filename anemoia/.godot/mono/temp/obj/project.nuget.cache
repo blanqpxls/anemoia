@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z/V0RfYYTnE=",
+  "dgSpecHash": "QIh0pPdo+g0=",
   "success": true,
-  "projectFilePath": "G:\\Other computers\\Anemoia\\gregtech\\sisyphean-trials\\Paradisis Nostalga.csproj",
+  "projectFilePath": "G:\\Other computers\\Anemoia\\Anemoia\\anemoia\\Paradisis Nostalga.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\June Son\\.nuget\\packages\\godot.sourcegenerators\\4.4.0\\godot.sourcegenerators.4.4.0.nupkg.sha512",
     "C:\\Users\\June Son\\.nuget\\packages\\godotsharp\\4.4.0\\godotsharp.4.4.0.nupkg.sha512",
