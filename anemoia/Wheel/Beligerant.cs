@@ -1,74 +1,41 @@
 using Godot;
-using System;
-using HerNostalgia.States;
+using Overture.Characters;
+using Overture.Leveling;
+using Engine.States;
 
-public partial class Character : CharacterBody2D
+namespace Overture.Characters
 {
-    [Export] public float Speed = 300.0f;
-    [Export] public float JumpVelocity = 600.0f;
-    [Export] public float AttackDamage = 10f;
-    [Export] public float AttCooldown = 0.5f;
-    [Export] public float Health = 500.0f;
-    [Export] public int SymphonProfundity = 25;
-
-    private float _attackTimer = 0f;
-    private States stateManager;
-
-    public override void _Ready()
+    public class Player : Belligerent
     {
-        base._Ready();
-        stateManager = GetNode<States>("States"); // Ensure the States node is properly set up
-    }
+        // Player-specific leveling modifier.
+        public AttunementModifier Attunement { get; private set; }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        _attackTimer -= (float)delta;
-        stateManager._PhysicsProcess(delta); // Delegate processing to the state manager
-    }
+        // Reference to the state machine controlling movement and combat behavior.
+        private States StateMachine;
 
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-        GD.Print($"{Name} took {damage} damage! Health: {Health}");
-
-        if (Health <= 0)
+        public override void _Ready()
         {
-            stateManager.ChangeState(Engine.eStates.Dead); // Transition to Dead state
-        }
-        else
-        {
-            stateManager.ChangeState(Engine.eStates.Staggered); // Transition to Staggered state
-        }
-    }
+            // Call the base initialization.
+            base._Ready();
 
-    public virtual void Die()
-    {
-        GD.Print($"{Name} has died.");
-        QueueFree(); // Removes entity from scene
-    }
+            // Initialize the attunement modifier.
+            Attunement = new AttunementModifier(1);
+            GD.Print("Player ready. Attunement Level: " + Attunement.Level);
 
-    public virtual void Attack()
-    {
-        if (_attackTimer > 0)
-        {
-            return; // Cooldown check
+            // Assuming the state machine is a child node called "States"
+            StateMachine = GetNode<States>("States");
         }
 
+        public override void _PhysicsProcess(float delta)
+        {
+            // Update the state machine.
+            StateMachine?._PhysicsProcess(delta);
+        }
 
-        GD.Print($"{Name} attacks for {AttackDamage} damage!");
-        _attackTimer = AttCooldown;
-        stateManager.ChangeState(Engine.eStates.Attacking); // Transition to Attacking state
-    }
-
-    public virtual void UseAbility(string abilityName)
-    {
-        GD.Print($"{Name} used {abilityName}!");
-        // Add logic for transitioning to specific ability states if needed
-    }
-
-    public void OnStateChanged(Engine.eStates newState)
-    {
-        GD.Print($"{Name} transitioned to state: {newState}");
-        // Handle any additional logic when the state changes
+        public void LevelUp()
+        {
+            Attunement.LevelUp();
+            GD.Print("Player leveled up! New Attunement Level: " + Attunement.Level);
+        }
     }
 }

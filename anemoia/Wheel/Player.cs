@@ -1,118 +1,47 @@
 using Godot;
 using System;
+using A
 
-public partial class Player : Beligerant
+public class Player : Belligerent
 {
-	[Export] public float MaxRun = 300.0f;
-	[Export] public float JumpVelocity = -900.0f;
-	[Export] public float AttackDamage = 10f;	
-	[Export] public float AttCooldown = 0.5f;
-	[Export] public float Health = 500.0f;
-	[Export] public int SymphonProfundity = 25;
-	[Export] public int MaxJumps = 2; // Maximum number of jumps
-	[Export] public float Acceleration = 130.0f;
-	[Export] public float Deceleration = 130.0f; 
+    // The player's attunement modifier for leveling and scaling stats.
+    public AttunementModifier Attunement { get; private set; }
 
-	private int jumpCount = 0;
-	private bool isJumping = false;
+    // Reference to the state machine component.
+    private Engine.States.States stateMachine;
 
-	public static Player Instance { get; private set; }
+    public override void _Ready()
+    {
+        // Initialize the base class logic.
+        base._Ready();
 
-	public enum PlayerState
-	{
-		Idle,
-		Running,
-		Jumping,
-		Attacking
-	}
+        // Create and initialize the attunement modifier.
+        Attunement = new AttunementModifier(initialLevel: 1);
 
-	public PlayerState currentState = PlayerState.Idle;
+        // Option 1: If the state machine is a child node of the player:
+        stateMachine = GetNode<Engine.States.States>("States");
 
-	public override void _Ready()
-	{
-		Instance = this;
-		// Initialize player-specific logic
-	}
+        // Option 2: Alternatively, if the state machine is a separate node in the scene tree,
+        // you might need to use a different path, e.g.:
+        // stateMachine = GetNode<Engine.States.States>("../States");
 
-	public override void _PhysicsProcess(double delta)
-	{
-		switch (currentState)
-		{
-			case PlayerState.Idle:
-				HandleIdleState();
-				break;
-			case PlayerState.Running:
-				HandleRunningState();
-				break;
-			case PlayerState.Jumping:
-				HandleJumpingState();
-				break;
-			case PlayerState.Attacking:
-				HandleAttackingState();
-				break;
-		}
-	}
+        GD.Print("Player is ready. Attunement Level: " + Attunement.Level);
+    }
 
-	private void HandleIdleState()
-	{
-		// Implement idle state logic here
-	}
+    public override void _PhysicsProcess(float delta)
+    {
+        // Update the state machine for handling movement, attacks, etc.
+        stateMachine?._PhysicsProcess(delta);
 
-	private void HandleRunningState()
-	{
-		// Implement running state logic here
-	}
+        // Additional player-specific physics logic can be placed here.
+        // For example, you might integrate attunement modifiers into combat calculations:
+        // float modifiedDamage = Attunement.ApplyDamageModifier(AttackDamage);
+    }
 
-	private void HandleJumpingState()
-	{
-		// Implement jumping state logic here
-	}
-
-	private void HandleAttackingState()
-	{
-		// Implement attacking state logic here
-	}
-
-	private void Jump()
-	{
-		if (jumpCount < MaxJumps)
-		{
-			Velocity = new Vector2(Velocity.X, JumpVelocity);
-			jumpCount++;
-			isJumping = true;
-			GD.Print("Player jumped");
-		}
-	}
-
-	private void Land()
-	{
-		jumpCount = 0;
-		isJumping = false;
-		GD.Print("Player landed");
-	}
-
-	public void OnStateChanged(Engine.eStates newState)
-	{
-		GD.Print("Player notified of state change: " + newState);
-		switch (newState)
-		{
-			case Engine.eStates.Idle:
-				currentState = PlayerState.Idle;
-				Land(); // Reset jump count when transitioning to Idle
-				break;
-			case Engine.eStates.Moving:
-				currentState = PlayerState.Running;
-				break;
-			case Engine.eStates.Jumping:
-				currentState = PlayerState.Jumping;
-				Jump(); // Trigger jump logic
-				break;
-			case Engine.eStates.Attacking:
-				currentState = PlayerState.Attacking;
-				break;
-			default:
-				GD.Print($"Unhandled state transition: {newState}");
-				break;
-		}
-	}
+    // A method to level up the player (and update attunement values)
+    public void LevelUp()
+    {
+        Attunement.LevelUp();
+        GD.Print("Player leveled up! New Attunement Level: " + Attunement.Level);
+    }
 }

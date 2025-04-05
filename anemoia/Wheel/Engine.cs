@@ -29,30 +29,6 @@ namespace Engine
         gDefending,
         gStrike
     }
-
-    
-  
-    public partial class GameEngine : Node
-    {
-        public static GameEngine Instance { get; private set; }
-        private List<eStates> states = new List<eStates>();
-
-        public override void _Ready()
-        {
-            Instance = this;
-            foreach (eStates state in Enum.GetValues(typeof(eStates)))
-            {
-                states.Add(state);
-            }
-        }
-
-        public void NotifyStateChange(eStates newState)
-        {
-            GD.Print("Engine notified of state change: " + newState);
-            Belligerent.Instance?.OnStateChanged(newState);
-        }
-
-        // Other methods...
-    }
 }
+
 
