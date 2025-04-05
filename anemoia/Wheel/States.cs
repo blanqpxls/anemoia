@@ -3,14 +3,24 @@ using System;
 using System.Collections.Generic;
 using Engine.eStates;
 
-namespace Engine.States
+namespace anemoia.Wheel
 {
     public enum eStates
     {
         Idle,
         Moving,
         Attacking,
-        Hook
+        Hook,
+        Retired,
+        Air,
+        gStrike,
+        gDefending,
+        Dash,
+        Climb,
+        GParry,
+        Staggered,
+        GSymphonCool,
+        GStrikeSpecialCool,
     }
 
     // The main state machine class.
@@ -26,23 +36,22 @@ namespace Engine.States
         public override void _Ready()
         {
             stateMap = new Dictionary<eStates, IState.IState>()
-            {
-                { eStates.Idle, new IdleState(this) },
-                { eStates.Moving, new MovingState(this) },
-                { eStates.Attacking, new AttackingState(this) },
-                { eStates.Retired, new DeadState(this) },
-                { eStates.Air, new AirState(this) },
-                { eStates.gStrike, new GStrike(this) },
-                { eStates.gDefending, new gDefending(this) },
-                { eStates.Dash, new DashState(this) },
-                { eStates.Climb, new ClimbState(this) },
-                { eStates.GParry, new ParryState(this) },
-                { eStates.Staggered, new GStaggered(this) },
-                { eStates.GSymphonCool, new GSymphonCool(this) },
-                { eStates.GStrikeSpecialCool, new GStrikeSpecialCool(this) },
-                // We add a default HookState with a placeholder target.
-                { eStates.Hook, new HookState(this, Vector2.Zero) }
-            };
+        {
+            { eStates.Idle, new IdleState(this) },
+            { eStates.Moving, new MovingState(this) },
+            { eStates.Attacking, new AttackingState(this) },
+            { eStates.Retired, new DeadState(this) },
+            { eStates.Air, new InAirState(this) },
+            { eStates.gStrike, new GStrike(this) },
+            { eStates.gDefending, new GDefending(this) },
+            { eStates.Dash, new DashState(this) },
+            { eStates.Climb, new ClimbState(this) },
+            { eStates.GParry, new ParryState(this) },
+            { eStates.Staggered, new GeStaggered(this) },
+            { eStates.GSymphonCool, new SymphonCoolState(this) },
+            { eStates.GStrikeSpecialCool, new GStrikeSpecialCool(this) },
+            { eStates.Hook, new HookState(this, Vector2.Zero) }
+        };
 
 
 
@@ -145,4 +154,186 @@ namespace Engine.States
         public void InAirState() => owner.ChangeState(eStates.Idle);
         public Motif GetMotif() => null;
     }
-}
+
+
+    public class DeadState : IState.IState
+    {
+        private readonly States owner;
+        public DeadState(States owner) { this.owner = owner; }
+        public void Enter() => GD.Print("Entering Dead State");
+        public void Update(float delta) { /* Handle death logic */ }
+        public void Exit() => GD.Print("Exiting Dead State");
+        public void InAirState() => owner.ChangeState(eStates.Idle);
+        public Motif GetMotif() => null;
+    }
+    public class GStrike : IState.IState
+    {
+        private readonly States owner;
+        public GStrike(States owner) { this.owner = owner; }
+        public void Enter() => GD.Print("Entering GStrike State");
+        public void Update(float delta) { /* Handle GStrike logic */ }
+        public void Exit() => GD.Print("Exiting GStrike State");
+        public void InAirState() => owner.ChangeState(eStates.Idle);
+        public Motif GetMotif() => null;
+    }
+
+    public class GDefending : IState.IState
+    {
+        private readonly States owner;
+        public GDefending(States owner) { this.owner = owner; }
+        public void Enter() => GD.Print("Entering gDefending State");
+        public void Update(float delta) { /* Handle gDefending logic */ }
+        public void Exit() => GD.Print("Exiting gDefending State");
+        public void InAirState() => owner.ChangeState(eStates.Idle);
+        public Motif GetMotif() => null;
+
+
+        public class RetiredeState : IState.IState
+        {
+            private readonly States owner;
+            public RetiredeState(States owner) { this.owner = owner; }
+            public void Enter() => GD.Print("Entering Retired State");
+            public void Update(float delta) { /* Handle Retired logic */ }
+            public void Exit() => GD.Print("Exiting Retired State");
+            public void InAirState() => owner.ChangeState(eStates.Idle);
+            public Motif GetMotif() => null;
+
+            public class DasheState : IState.IState
+            {
+                private readonly States owner;
+                public DasheState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Dash State");
+                public void Update(float delta) { /* Handle Dash logic */ }
+                public void Exit() => GD.Print("Exiting Dash State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class ClimbeState : IState.IState
+            {
+                private readonly States owner;
+                public ClimbeState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Climb State");
+                public void Update(float delta) { /* Handle Climb logic */ }
+                public void Exit() => GD.Print("Exiting Climb State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class eParryState : IState.IState
+            {
+                private readonly States owner;
+                public eParryState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Parry State");
+                public void Update(float delta) { /* Handle Parry logic */ }
+                public void Exit() => GD.Print("Exiting Parry State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+
+            public class GeStaggered : IState.IState
+            {
+                private readonly States owner;
+                public GeStaggered(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Staggered State");
+                public void Update(float delta) { /* Handle Staggered logic */ }
+                public void Exit() => GD.Print("Exiting Staggered State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class SymphonCoolState : IState.IState
+            {
+                private readonly States owner;
+                public SymphonCoolState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Symphon Cool State");
+                public void Update(float delta) { /* Handle Symphon Cool logic */ }
+                public void Exit() => GD.Print("Exiting Symphon Cool State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class GStrikeSpecialCool : IState.IState
+            {
+                private readonly States owner;
+                public GStrikeSpecialCool(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering GStrike Special Cool State");
+                public void Update(float delta) { /* Handle GStrike Special Cool logic */ }
+                public void Exit() => GD.Print("Exiting GStrike Special Cool State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+
+            public class HookeState : IState.IState
+            {
+                private readonly States owner;
+                private Vector2 hookTarget;
+                public HookeState(States owner, Vector2 hookTarget)
+                {
+                    this.owner = owner;
+                    this.hookTarget = hookTarget;
+                }
+                public void Enter() => GD.Print("Entering Hook State");
+                public void Update(float delta)
+                {
+                    Vector2 direction = (hookTarget - owner.Position).Normalized();
+                    owner.Velocity = direction * States.HookPullSpeed;
+
+                    if (owner.Position.DistanceTo(hookTarget) < 10f)
+                        owner.ChangeState(eStates.Idle);
+                }
+                public void Exit() => GD.Print("Exiting Hook State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class DashState : IState.IState
+            {
+                private readonly States owner;
+                public DasheState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Dash State");
+                public void Update(float delta) { /* Handle Dash logic */ }
+                public void Exit() => GD.Print("Exiting Dash State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+
+
+            public class ClimbrState : IState.IState
+            {
+                private readonly States owner;
+                public ClimbrState(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Climb State");
+                public void Update(float delta) { /* Handle Climb logic */ }
+                public void Exit() => GD.Print("Exiting Climb State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class GeStaggered : IState.IState
+            {
+                private readonly States owner;
+                public GeStaggered(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Staggered State");
+                public void Update(float delta) { /* Handle Staggered logic */ }
+                public void Exit() => GD.Print("Exiting Staggered State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+
+            public class SymphonCoolState : IState.IState
+            {
+                private readonly States owner;
+                public SymphonCool(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering Symphon Cool State");
+                public void Update(float delta) { /* Handle Symphon Cool logic */ }
+                public void Exit() => GD.Print("Exiting Symphon Cool State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+            public class GStrikeSpecialCool : IState.IState
+            {
+                private readonly States owner;
+                public GStrikeSpecialCool(States owner) { this.owner = owner; }
+                public void Enter() => GD.Print("Entering GStrike Special Cool State");
+                public void Update(float delta) { /* Handle GStrike Special Cool logic */ }
+                public void Exit() => GD.Print("Exiting GStrike Special Cool State");
+                public void InAirState() => owner.ChangeState(eStates.Idle);
+                public Motif GetMotif() => null;
+            }
+
+        }
