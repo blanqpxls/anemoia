@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Paradisis Nostalga")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+791d830404e1a8ae44fa6eab03142158b295e548")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1367f3f9f5ce9ab0c400a18b5cf0d78b3f263e73")]
 [assembly: System.Reflection.AssemblyProductAttribute("Paradisis Nostalga")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Paradisis Nostalga")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

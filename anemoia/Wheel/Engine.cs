@@ -27,7 +27,8 @@ namespace Engine
     Grappling, // <-- Add this if missing
         InAir,
         gDefending,
-        gStrike
+        gStrike,
+        SymphonCoolState,
     }
 }
 

@@ -1,14 +1,14 @@
 6dcd580d9bf2a9dbe66cc9f994d3620b
-::res://::1743868296
+::res://::1743944669
 # Code Citations.txt::TextFile/TextFile::-1::1742386732::0::1::::<><><>0<>0<><>::
 AnimatedSprite2d.cs::CSharpScript/CSharpScript::1889727431203392579::1742924294::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
 button.gd::GDScript/GDScript::1993003514625191098::1742145322::0::1::::<>Button<><>0<>0<><>::
-Camera2d.cs::CSharpScript::7999177489570953938::1743779858::0::1::::<><><>0<>0<><>::
+Camera2d.cs::CSharpScript/CSharpScript::7999177489570953938::1743779858::0::1::::<><><>0<>0<><>::
 CampaignSelectionScene.tscn::PackedScene/PackedScene::9184562807277090603::1743703168::0::1::::<><><>0<>0<><>::
 CharacterBody2d.cs::CSharpScript/CSharpScript::6989767935867326429::1742142138::0::1::::<>CharacterBody2D<><>0<>0<><>::
 character_body_2d.gd::GDScript/GDScript::5812275131556316418::1737746649::0::1::::<>CharacterBody2D<><>0<>0<><>::
 character_in_2.tscn::PackedScene/PackedScene::7399896469011975351::1742405176::0::1::::<><><>0<>0<><>::uid://c3s3v6rsxj4ve::::res://oak_woods_v1.0/character/char_blue.png<>uid://16nsgd252umd::::res://AnimatedSprite2d.cs<>uid://dysf6bupq628n::::res://CollisionShape2d.cs
-charIN.tscn::PackedScene::9185127798751608459::1743779942::0::1::::<><><>0<>0<><>::uid://d24vgijk2accw::::res://Wheel/States.cs<>uid://d3qrkabxpsybh::::res://Wheel/Engine.cs<>uid://c6l2xww6b3jp4::::res://Wheel/Air.cs<>uid://bxpamo01wqqcj::::res://Wheel/Damage.cs<>uid://epckg8spjcot::::res://Wheel/Fatal.cs<>uid://c5wtgue6cn874::::res://Wheel/Ground.cs<>uid://c274ifb3l72be::::res://Wheel/GGrapple.cs<>uid://dqvb0auxpjsur::::res://Wheel/GStrike.cs<>uid://chmlm7n2i77pm::::res://Wheel/GCords.cs<>uid://d0eect3m6d5qe::::res://Wheel/GStrikeSpecialCool.cs<>uid://b0adobs12xi7n::::res://Wheel/GSymphonCool.cs<>uid://bn5is3fh211lw::::res://Wheel/GDebuffs.cs<>uid://hemsqmcmp1qa::::res://Wheel/GResonance.cs<>uid://cr45qaficuidn::::res://Wheel/GStam.cs<>uid://cejgeyas1w10d::::res://Wheel/GParry.cs<>uid://cvun2vttgk42x::::res://Wheel/GStaggered.cs<>uid://dalfkqc1flol1::::res://Placeholder/Cora - template_0_Idle.png<>uid://cip08l7xstu1x::::res://Placeholder/Cora - template_1_Walk.png<>uid://b6tu7ynk74ote::::res://Placeholder/Cora - template_2_Dash.png
+charIN.tscn::PackedScene::9185127798751608459::1743877963::0::1::::<><><>0<>0<><>::uid://d24vgijk2accw::::res://Wheel/States.cs<>uid://d3qrkabxpsybh::::res://Wheel/Engine.cs<>uid://c6l2xww6b3jp4::::res://Wheel/Air.cs<>uid://bxpamo01wqqcj::::res://Wheel/Damage.cs<>uid://epckg8spjcot::::res://Wheel/Fatal.cs<>uid://c5wtgue6cn874::::res://Wheel/Ground.cs<>uid://c274ifb3l72be::::res://Wheel/GGrapple.cs<>uid://dqvb0auxpjsur::::res://Wheel/GStrike.cs<>uid://chmlm7n2i77pm::::res://Wheel/GCords.cs<>uid://d0eect3m6d5qe::::res://Wheel/GStrikeSpecialCool.cs<>uid://b0adobs12xi7n::::res://Wheel/GSymphonCool.cs<>uid://bn5is3fh211lw::::res://Wheel/GDebuffs.cs<>uid://hemsqmcmp1qa::::res://Wheel/GResonance.cs<>uid://cr45qaficuidn::::res://Wheel/GStam.cs<>uid://cejgeyas1w10d::::res://Wheel/GParry.cs<>uid://cvun2vttgk42x::::res://Wheel/GStaggered.cs<>uid://dalfkqc1flol1::::res://Placeholder/Cora - template_0_Idle.png<>uid://cip08l7xstu1x::::res://Placeholder/Cora - template_1_Walk.png<>uid://b6tu7ynk74ote::::res://Placeholder/Cora - template_2_Dash.png
 CollisionShape2d.cs::CSharpScript/CSharpScript::8881312126663642419::1742924294::0::1::::<>CollisionShape2D<><>0<>0<><>::
 HerNostalgia.cs::CSharpScript/CSharpScript::2503602902619712803::1743007210::0::1::::<><><>0<>0<><>::
 Hook.cs::CSharpScript/CSharpScript::5596473798154053473::1743255060::0::1::::<><><>0<>0<><>::
@@ -16,7 +16,7 @@ icon.svg::CompressedTexture2D/CompressedTexture2D::6842386406278679927::17340216
 Illustration3.png::CompressedTexture2D/CompressedTexture2D::3106805397052264417::1742402646::1742402941::1::::<><><>0<>0<>01a223cab9cb4f9703894bafb8bb5f32<>res://.godot/imported/Illustration3.png-c0a744602776690b3c802bbd904ac510.ctex::
 Illustration.png::CompressedTexture2D/CompressedTexture2D::5774550302357326869::1742144119::1742144095::1::::<><><>0<>0<>9f6fd9c2f9ee0bae23bb7b1f629e610f<>res://.godot/imported/Illustration.png-39c237b07306b86769691a656dff3136.ctex::
 InAirState.cs::CSharpScript/CSharpScript::5998244281595070961::1743024653::0::1::::<><><>0<>0<><>::
-IState.cs::CSharpScript/CSharpScript::5795802336121635065::1743023889::0::1::::<><><>0<>0<><>::
+IState.cs::CSharpScript::5795802336121635065::1743872595::0::1::::<><><>0<>0<><>::
 JournalScene.tscn::PackedScene/PackedScene::7961579769394855081::1743703168::0::1::::<><><>0<>0<><>::
 main.gd::GDScript/GDScript::1632609674807799577::1734024173::0::1::::<>Node2D<><>0<>0<><>::
 main.tscn::PackedScene/PackedScene::6598685859815697011::1742142607::0::1::::<><><>0<>0<><>::uid://xi33wkcp3m0h::::res://main.gd
@@ -322,14 +322,15 @@ Cora - template_55_Up throw.png::CompressedTexture2D/CompressedTexture2D::449476
 Cora - template_56_Down throw.png::CompressedTexture2D/CompressedTexture2D::8176202333579716111::1742495150::1743004025::1::::<><><>0<>0<>a59c78ca2097418abe88e2c00bb3d740<>res://.godot/imported/Cora - template_56_Down throw.png-ad6185d6ece183999e3f412bd272f8fc.ctex::
 Cora - template_57_Match entrance.png::CompressedTexture2D/CompressedTexture2D::7478545312782127542::1742495151::1743004024::1::::<><><>0<>0<>4e762b136c85fdc10dca65c28184821e<>res://.godot/imported/Cora - template_57_Match entrance.png-f6f490660276b7f551561f4b1f95bcfb.ctex::
 Cora - template_58_Victory.png::CompressedTexture2D/CompressedTexture2D::8066724117588610755::1742495153::1743004025::1::::<><><>0<>0<>7dbd9c6438603700c69ae354e465d601<>res://.godot/imported/Cora - template_58_Victory.png-b24fc9c2b23f8f54da0ef6d5e80cb4dc.ctex::
-::res://Wheel/::1743779858
+::res://Wheel/::1743893049
 Air.cs::CSharpScript/CSharpScript::6973085298434716943::1743023633::0::1::::<><><>0<>0<><>::
 Archi.cs::CSharpScript/CSharpScript::8488768734735374621::1743779858::0::1::::<><><>0<>0<><>::
-Beligerant.cs::CSharpScript/CSharpScript::5522283422196344092::1743008312::0::1::::<><><>0<>0<><>::
+AttunementModifier.cs::CSharpScript::4886132506286172313::1743875839::0::1::::<><><>0<>0<><>::
+Beligerant.cs::CSharpScript::5522283422196344092::1743893045::0::1::::<><><>0<>0<><>::
 Belligerent.cs::CSharpScript/CSharpScript::2099577482639724847::1742927537::0::1::::<><><>0<>0<><>::
 Damage.cs::CSharpScript/CSharpScript::4031751958363981549::1742659722::0::1::::<><><>0<>0<><>::
 DevTestScene.tscn::PackedScene/PackedScene::855077053525288133::1742418860::0::1::::<><><>0<>0<><>::uid://d34lyiddf8o0j::::res://charIN.tscn
-Engine.cs::CSharpScript/CSharpScript::9158629766435844649::1743340665::0::1::::<><><>0<>0<><>::
+Engine.cs::CSharpScript::9158629766435844649::1743872262::0::1::::<><><>0<>0<><>::
 Fatal.cs::CSharpScript/CSharpScript::311860699744493871::1742659722::0::1::::<><><>0<>0<><>::
 GCords.cs::CSharpScript/CSharpScript::5289626824416840362::1742658083::0::1::::<><><>0<>0<><>::
 GDebuffs.cs::CSharpScript/CSharpScript::3361326342574742676::1742658100::0::1::::<><><>0<>0<><>::
@@ -343,7 +344,9 @@ GStam.cs::CSharpScript/CSharpScript::6027768754676931987::1742659722::0::1::::<>
 GStrike.cs::CSharpScript/CSharpScript::8325740875924988825::1743023633::0::1::::<><><>0<>0<><>::
 GStrikeSpecialCool.cs::CSharpScript/CSharpScript::8922488134390208548::1743023610::0::1::::<><><>0<>0<><>::
 GSymphonCool.cs::CSharpScript/CSharpScript::4141349008285024661::1743023604::0::1::::<><><>0<>0<><>::
-Player.cs::CSharpScript/CSharpScript::7890317700266338770::1743779858::0::1::::<><><>0<>0<><>::
+Motif.cs::CSharpScript::1583065191254094809::1743873324::0::1::::<><><>0<>0<><>::
+Motifs.cs::CSharpScript::2151860647403089960::1743869664::0::1::::<><><>0<>0<><>::
+Player.cs::CSharpScript::7890317700266338770::1743893049::0::1::::<><><>0<>0<><>::
 States2222222.cs::CSharpScript/CSharpScript::1657804922203705713::1743025856::0::1::::<><><>0<>0<><>::
-States.cs::CSharpScript::9115513990365914770::1743779858::0::1::::<><><>0<>0<><>::
+States.cs::CSharpScript::9115513990365914770::1743891451::0::1::::<><><>0<>0<><>::
 StatesFAGFAGAFG.cs::CSharpScript/CSharpScript::6416058026040996167::1743029354::0::1::::<><><>0<>0<><>::

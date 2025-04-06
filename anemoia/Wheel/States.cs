@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Engine.eStates;
 
-namespace anemoia.Wheel
+namespace Engine.eStates
 {
     public enum eStates
     {
@@ -21,6 +21,9 @@ namespace anemoia.Wheel
         Staggered,
         GSymphonCool,
         GStrikeSpecialCool,
+
+        GeStaggered,
+        HookeState,
     }
 
     // The main state machine class.
@@ -178,6 +181,7 @@ namespace anemoia.Wheel
     }
 
     public class GDefending : IState.IState
+
     {
         private readonly States owner;
         public GDefending(States owner) { this.owner = owner; }
@@ -229,16 +233,7 @@ namespace anemoia.Wheel
                 public Motif GetMotif() => null;
             }
 
-            public class GeStaggered : IState.IState
-            {
-                private readonly States owner;
-                public GeStaggered(States owner) { this.owner = owner; }
-                public void Enter() => GD.Print("Entering Staggered State");
-                public void Update(float delta) { /* Handle Staggered logic */ }
-                public void Exit() => GD.Print("Exiting Staggered State");
-                public void InAirState() => owner.ChangeState(eStates.Idle);
-                public Motif GetMotif() => null;
-            }
+       
             public class SymphonCoolState : IState.IState
             {
                 private readonly States owner;
@@ -249,17 +244,7 @@ namespace anemoia.Wheel
                 public void InAirState() => owner.ChangeState(eStates.Idle);
                 public Motif GetMotif() => null;
             }
-            public class GStrikeSpecialCool : IState.IState
-            {
-                private readonly States owner;
-                public GStrikeSpecialCool(States owner) { this.owner = owner; }
-                public void Enter() => GD.Print("Entering GStrike Special Cool State");
-                public void Update(float delta) { /* Handle GStrike Special Cool logic */ }
-                public void Exit() => GD.Print("Exiting GStrike Special Cool State");
-                public void InAirState() => owner.ChangeState(eStates.Idle);
-                public Motif GetMotif() => null;
-            }
-
+         
             public class HookeState : IState.IState
             {
                 private readonly States owner;
@@ -304,7 +289,7 @@ namespace anemoia.Wheel
                 public void InAirState() => owner.ChangeState(eStates.Idle);
                 public Motif GetMotif() => null;
             }
-            public class GeStaggered : IState.IState
+            public override GeStaggered : IState.IState
             {
                 private readonly States owner;
                 public GeStaggered(States owner) { this.owner = owner; }
@@ -315,16 +300,6 @@ namespace anemoia.Wheel
                 public Motif GetMotif() => null;
             }
 
-            public class SymphonCoolState : IState.IState
-            {
-                private readonly States owner;
-                public SymphonCool(States owner) { this.owner = owner; }
-                public void Enter() => GD.Print("Entering Symphon Cool State");
-                public void Update(float delta) { /* Handle Symphon Cool logic */ }
-                public void Exit() => GD.Print("Exiting Symphon Cool State");
-                public void InAirState() => owner.ChangeState(eStates.Idle);
-                public Motif GetMotif() => null;
-            }
             public class GStrikeSpecialCool : IState.IState
             {
                 private readonly States owner;
@@ -337,3 +312,15 @@ namespace anemoia.Wheel
             }
 
         }
+public class GeStaggered : IState.IState
+{
+    private readonly States owner;
+    public GeStaggered(States owner) { this.owner = owner; }
+    public void Enter() => GD.Print("Entering Staggered State");
+    public void Update(float delta) { /* Handle Staggered logic */ }
+    public void Exit() => GD.Print("Exiting Staggered State");
+    public void InAirState() => owner.ChangeState(eStates.Idle);
+    public Motif GetMotif() => null;
+}
+    }
+ }
