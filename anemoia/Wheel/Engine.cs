@@ -49,7 +49,7 @@ namespace Engine
         public void NotifyStateChange(eStates newState)
         {
             GD.Print("Engine notified of state change: " + newState);
-            Belligerent.Instance?.OnStateChanged(newState);
+            Target.Instance?.OnStateChanged(newState);
         }
 
         // Other methods...

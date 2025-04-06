@@ -94,11 +94,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Other computers\\Anemoia\\gregtech\\sisyphean-trials\\Paradisis Nostalga.csproj",
+      "projectUniqueName": "G:\\Other computers\\Anemoia\\Anemoia\\main\\anemoia\\Paradisis Nostalga.csproj",
       "projectName": "Paradisis Nostalga",
-      "projectPath": "G:\\Other computers\\Anemoia\\gregtech\\sisyphean-trials\\Paradisis Nostalga.csproj",
+      "projectPath": "G:\\Other computers\\Anemoia\\Anemoia\\main\\anemoia\\Paradisis Nostalga.csproj",
       "packagesPath": "C:\\Users\\June Son\\.nuget\\packages\\",
-      "outputPath": "G:\\Other computers\\Anemoia\\gregtech\\sisyphean-trials\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "G:\\Other computers\\Anemoia\\Anemoia\\main\\anemoia\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

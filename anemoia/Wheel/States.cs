@@ -244,7 +244,11 @@ namespace Engine.States
         }
         public void Exit() => GD.Print("Exiting In-Air State");
         public void CurrentState() => GD.Print("Current state is InAirState");
-        public void InAirState() => GD.Print("Already in InAirState");
+        public override void InAirState();{
+            IAirState(); = 0;
+            return InAirState;
+        }
+        
     }
 
     public class GStrike : IState
