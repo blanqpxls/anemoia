@@ -19,14 +19,13 @@ public partial class Player : CharacterBody2D
     // Adjusted to match the constructor of Target.Belligerent
     Target.Belligerent MyPlayer = new Target.Belligerent(
         "Emilia", // Name
-        7,        // Level
-        0,        // Experience
-        500,   // Health
-        0,        // Mana
-        10,       // AttackDamage
-        0,        // Defense
-        0,        // Speed
-        0         // Additional parameters (adjust as needed)
+        1,         // ID
+        13,        // Type
+        7,         // Level
+        600.0f,    // Health
+        10.0f,     // AttackDamage
+        300.0f,    // Speed
+        50         // Range
     );
 
     public static Player Instance { get; private set; }
