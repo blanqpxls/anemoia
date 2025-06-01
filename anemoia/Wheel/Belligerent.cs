@@ -12,7 +12,7 @@ namespace Target { public partial class Belligerent : CharacterBody2D, IState.IS
 {
 
 
-     public Belligerent(String name, int id, int type, int level, float health, int damage, int speed, int range, int id1)
+     public Belligerent(String name, int id, int type, int level, float health, float damage, float speed, int range)
     {
         Id = id;
         Level = level;

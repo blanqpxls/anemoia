@@ -53,6 +53,8 @@ namespace Engine.States
         public const float ClimbDownSpeed = 50f;
         public const float ClimbSlipSpeed = 0.1f;
 
+        public const float GStrike = 10f; // Placeholder for GStrike damage
+
         // Added a hook-pull speed constant.
         public const float HookPullSpeed = 400f;
 
