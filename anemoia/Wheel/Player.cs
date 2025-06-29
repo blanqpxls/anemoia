@@ -1,7 +1,16 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using ParadisisNostalga.Wheel;
+using Engine.States;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D,
+    ParadisisNostalga.Wheel.IHasHotbar,
+    ParadisisNostalga.Wheel.IHasEquipment,
+    ParadisisNostalga.Wheel.IHasMana,
+    ParadisisNostalga.Wheel.IHasNotes,
+    ParadisisNostalga.Wheel.IHasTempMotifs,
+    ParadisisNostalga.Wheel.IHasMotifModifiers
 {
     [Export] public float MaxRun = 300.0f;
     [Export] public float JumpVelocity = -900.0f;
@@ -16,17 +25,21 @@ public partial class Player : CharacterBody2D
     private int jumpCount = 0;
     private bool isJumping = false;
 
-    // Adjusted to match the constructor of Target.Belligerent
-    Target.Belligerent MyPlayer = new Target.Belligerent(
-        "Emilia", // Name
-        1,         // ID
-        13,        // Type
-        7,         // Level
-        600.0f,    // Health
-        10.0f,     // AttackDamage
-        300.0f,    // Speed
-        50         // Range
-    );
+    // Reference to the player's composition (default to Emilia)
+    public ParadisisNostalga.Wheel.Composition.CompositionData Composition { get; private set; }
+    // Reference to the Belligerant wrapper for state/input system
+    public ParadisisNostalga.Wheel.Belligerant BelligerantRef { get; private set; }
+    // Unique ScriptKey for this player (for Theatre and SaveManager)
+    public string ScriptKey { get; private set; }
+
+    // Inventory, hotbar, equipment, etc. (implementations for interfaces)
+    public ParadisisNostalga.Wheel.Composition.InventoryData Inventory { get; private set; } = new ParadisisNostalga.Wheel.Composition.InventoryData();
+    public ParadisisNostalga.Wheel.HotbarData Hotbar { get; private set; } = new ParadisisNostalga.Wheel.HotbarData();
+    public ParadisisNostalga.Wheel.EquipmentData Equipment { get; private set; } = new ParadisisNostalga.Wheel.EquipmentData();
+    public ParadisisNostalga.Wheel.ManaData Mana { get; private set; } = new ParadisisNostalga.Wheel.ManaData();
+    public ParadisisNostalga.Wheel.NotesData Notes { get; private set; } = new ParadisisNostalga.Wheel.NotesData();
+    public ParadisisNostalga.Wheel.TempMotifsData TempMotifs { get; private set; } = new ParadisisNostalga.Wheel.TempMotifsData();
+    public ParadisisNostalga.Wheel.MotifModifiersData MotifModifiers { get; private set; } = new ParadisisNostalga.Wheel.MotifModifiersData();
 
     public static Player Instance { get; private set; }
 
@@ -43,7 +56,12 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         Instance = this;
-        // Initialize player-specific logic
+        ScriptKey = "Player_Emilia";
+        Composition = ParadisisNostalga.Wheel.Composition.BaseCompositions[ParadisisNostalga.Wheel.Composition.CompositionType.Emilia];
+        BelligerantRef = new ParadisisNostalga.Wheel.Belligerant(ScriptKey, this, Composition);
+        var theatre = new ParadisisNostalga.Wheel.Theatre();
+        theatre.AssignActorId(BelligerantRef);
+        theatre.SetActorBehaviour(BelligerantRef, ParadisisNostalga.Wheel.Theatre.ActorBehaviourType.Player);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -103,23 +121,24 @@ public partial class Player : CharacterBody2D
         GD.Print("Player landed");
     }
 
-    public void OnStateChanged(Engine.eStates newState)
+    public void OnStateChanged(eStates newState)
     {
         GD.Print("Player notified of state change: " + newState);
         switch (newState)
         {
-            case Engine.eStates.Idle:
+            case eStates.Idle:
                 currentState = PlayerState.Idle;
-                Land(); // Reset jump count when transitioning to Idle
+                Land();
                 break;
-            case Engine.eStates.Moving:
+            case eStates.Moving:
                 currentState = PlayerState.Running;
                 break;
-            case Engine.eStates.Jumping:
+            case eStates.Air:
+            case eStates.InAir:
                 currentState = PlayerState.Jumping;
-                Jump(); // Trigger jump logic
+                Jump();
                 break;
-            case Engine.eStates.Attacking:
+            case eStates.Attacking:
                 currentState = PlayerState.Attacking;
                 break;
             default:
@@ -127,4 +146,20 @@ public partial class Player : CharacterBody2D
                 break;
         }
     }
+
+    // Implement interface methods for IHasHotbar, IHasEquipment, etc.
+    public List<string> GetHotbar() => Hotbar.Items;
+    public void SetHotbar(List<string> hotbar) => Hotbar.Items = hotbar;
+    public List<string> GetEquipped() => Equipment.Items;
+    public void SetEquipped(List<string> equipped) => Equipment.Items = equipped;
+    public int GetMana() => Mana.Value;
+    public void SetMana(int mana) => Mana.Value = mana;
+    public int GetNotes() => Notes.Value;
+    public void SetNotes(int notes) => Notes.Value = notes;
+    public int GetTempMotifs() => TempMotifs.Value;
+    public void SetTempMotifs(int tempMotifs) => TempMotifs.Value = tempMotifs;
+    public List<string> GetMotifModifiers() => MotifModifiers.Items;
+    public void SetMotifModifiers(List<string> modifiers) => MotifModifiers.Items = modifiers;
+    public void AddMotifModifier(string modifier) { if (!MotifModifiers.Items.Contains(modifier)) MotifModifiers.Items.Add(modifier); }
+    public void RemoveMotifModifier(string modifier) { MotifModifiers.Items.Remove(modifier); }
 }

@@ -1,58 +1,35 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-
+using Engine.States; // Use eStates from States.cs
 
 namespace Engine
 {
     /// <summary>
-    /// Defines the various states that a character can be in.
-    /// These states are used throughout the engine to determine behavior, animations, and logic.
+    /// Main game engine node for state notifications and global logic.
     /// </summary>
-  public enum eStates
-{
-    Idle,
-    Moving,
-    Attacking,
-    Retired,
-    Air,
-    GStrike,
-    GDefending,
-    Dash,
-    Climb,
-    GParry,
-    Staggered,
-    GSymphonCool,
-    GStrikeSpecialCool,
-    Grappling, // <-- Add this if missing
-        InAir,
-        gDefending,
-        gStrike
-    }
-
-    
-  
     public partial class GameEngine : Node
     {
         public static GameEngine Instance { get; private set; }
-        private List<eStates> states = new List<eStates>();
+        private List<Engine.States.eStates> states = new List<Engine.States.eStates>();
 
         public override void _Ready()
         {
             Instance = this;
-            foreach (eStates state in Enum.GetValues(typeof(eStates)))
+            foreach (Engine.States.eStates state in Enum.GetValues(typeof(Engine.States.eStates)))
             {
                 states.Add(state);
             }
         }
 
-        public void NotifyStateChange(eStates newState)
+        public void NotifyStateChange(Engine.States.eStates newState)
         {
             GD.Print("Engine notified of state change: " + newState);
-            Target.Instance?.OnStateChanged(newState);
+            // TODO: Notify player or other systems of state change here.
+            // Example: ParadisisNostalga.Wheel.Player.Instance?.OnStateChanged(newState);
         }
 
-        // Other methods...
+        // Add any additional engine-wide methods here
     }
 }
 
